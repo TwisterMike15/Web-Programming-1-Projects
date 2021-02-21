@@ -1,0 +1,30 @@
+body{
+  background:blue;
+}
+h1
+{
+  color: yellow;
+}
+h2
+{
+  display:inline;
+  color: yellow;
+}
+h3
+{
+  display:inline;
+  color: yellow;
+}
+h4
+{
+  text-align: center;
+  color: yellow;
+}
+p
+{
+  color: white;
+}
+a
+{
+  color:LightGray;
+}

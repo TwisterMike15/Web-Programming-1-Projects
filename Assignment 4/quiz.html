@@ -1,0 +1,192 @@
+<HTML>
+
+  <head>
+    <h1 align = "middle">Basic Programming Quiz</h1>
+  </head>
+
+  <body>
+
+
+      <p id = "beginning">All of the questions are multiple choice:</p>
+
+      <p>1. What ends a line of code in most programming languages?</p>
+        <form>
+          <input type = "radio" name = "Q1" value = "Option 1"><p>{</p><br>
+          <input type = "radio" name = "Q1" value = "Option 1"><p>+</p><br>
+          <input type = "radio" name = "Q1" id = "Q1ans" value = "Option 1"><p>;</p><br>
+          <input type = "radio" name = "Q1" value = "Option 1"><p>#</p><br>
+        </form>
+
+      <p id = "p2">2. Which of the following errors is generally viewed as the most dangerous type of error when programming?</p>
+        <form>
+          <input type = "radio" name = "Q2" value = "Option 1" id = "Q2ans"><p>Logical Errors</p><br>
+          <input type = "radio" name = "Q2" value = "Option 1"><p>Syntax Errors</p><br>
+          <input type = "radio" name = "Q2" value = "Option 1"><p>Semantic Errors</p><br>
+          <input type = "radio" name = "Q2" value = "Option 1"><p>Declaration Errors</p><br>
+        </form>
+
+      <p id = "p3">3. The following c code is valid (True/False):
+        <br>
+            if(i<5)
+            <br>
+              printf("i is less than 5");</p>
+              <form>
+                <input type = "radio" name = "Q2" value = "True" id = "Q3ans"><p>True</p><br>
+                <input type = "radio" name = "Q2" value = "False"><p>False</p><br>
+              </form>
+
+
+      <p id = "p4">4. Strings are usually considered primitive data types (True/False)</p>
+      <form>
+        <input type = "radio" name = "Q2" value = "True"><p>True</p><br>
+        <input type = "radio" name = "Q2" value = "False" id = "Q4ans"><p>False</p>
+      </form>
+
+        <button type = "button" id = "submit" onclick = "scoreTest()">Submit Test</button>
+
+        <p id= "end"></p>
+        <p id= "realend"></p>
+  </body>
+</HTML>
+
+<script>
+
+var timeLeft = 120;
+var timePrint = document.createElement("p");
+
+  function scoreTest()
+  {
+    var list = [];
+    var correct = 0;
+    //checks to see if they entered the first answer cerrectly
+    if(document.getElementById('Q1ans').checked)
+    {
+
+      var ans = document.createElement("p");
+
+      ans.innerHTML = "Correct!";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("p2"));
+      correct = correct+1;
+
+    }
+    else
+    {
+      var ans = document.createElement("p");
+
+      ans.innerHTML = "In most modern programming languages, a semi colon is used to indicate the end of a line of code. Java, C, C++, and JavaScript are all languages where this is the case.";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("p2"));
+
+    }
+
+    //Checks to see if they entered the second answer correctly
+
+    if(document.getElementById('Q2ans').checked)
+    {
+      var ans = document.createElement("p");
+
+      ans.innerHTML = "Correct!";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("p3"));
+      correct = correct+1;
+    }
+    else
+    {
+      var ans = document.createElement("p");
+
+      ans.innerHTML = "Out of these types of errors, logic errors can be considered to be the most dangerous. This is because logic erros can be difficult to find and debug, depending on the context of the error";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("p3"));
+
+    }
+
+
+    //Checks to see if the thrid answer is correct
+
+    if(document.getElementById('Q3ans').checked)
+    {
+      var ans = document.createElement("p");
+
+      ans.innerHTML = "Correct!";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("p4"));
+      correct = correct+1;
+    }
+    else
+    {
+      var ans = document.createElement("p");
+      ans.innerHTML = "The correct answer is true. Although curely braces are required for if statements to execute multiple lines of code, one line of code can be executed without the use of curely braces.";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("p4"));
+
+    }
+
+
+    //Checks to see if the fourth answer is correct
+    if(document.getElementById('Q4ans').checked)
+    {
+      var ans = document.createElement("p");
+
+      ans.innerHTML = "Correct!";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("submit"));
+      correct = correct+1;
+    }
+    else
+    {
+      var ans = document.createElement("p");
+      ans.innerHTML = "The correct answer is false. Although Strings exist in many modern programming languages, it is rare that they are treated as a primitive data type. Most programming languages have string objects. However, some langauges, like C, do not have built in Strings and require programmers to create arrays of characters to represent strings.";
+      ans.style.color = "red";
+      document.body.insertBefore(ans, document.getElementById("submit"));
+    }
+
+    list = document.getElementsByTagName("input");
+    var i = 0;
+    for(i=0;i<12;i++)
+    {
+      list[i].disabled = true;
+    }
+    document.getElementById("submit").disabled = true;
+    clearInterval(countDown);
+    clearTimeout(timeout);
+    document.getElementsByTagName("p")[0].textContent = "Your quiz has been submitted";
+    if(correct === 4)
+    {
+      var text = document.createElement("p");
+      text.innerHTML = "Wow! You got every question right! You're on your way to becoming a programming expert!";
+      document.getElementById("end").append(text);
+      var pic = document.createElement("img");
+      pic.src = "reward.jpg";
+      document.getElementById("realend").append(pic);
+    }
+  }
+
+function  updateTime()
+{
+
+  timeLeft = timeLeft-1;
+  timePrint.innerHTML = "Time Remaining: " + timeLeft;
+  document.body.insertBefore(timePrint, document.getElementById("beginning"));
+}
+
+  var timeout = setTimeout(scoreTest, 120000);
+  var countDown = setInterval(updateTime, 1000);
+
+</script>
+
+<style>
+
+body{
+  background-color: darkblue;
+}
+
+p{
+  color:yellow;
+}
+
+h1{
+  color:orange;
+}
+
+</style>

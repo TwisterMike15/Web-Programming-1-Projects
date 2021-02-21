@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>X:
+      <input type = "text" id = "x" onchange = "CalcValues()" />
+    </p>
+    <p>Y:
+      <input type = "text" id = "y" onchange = "CalcValues()"/>
+    </p>
+    <p>X+Y= :
+      <input type = "text" id = "+" disabled/>
+    </p>
+    <p>X-Y= :
+      <input type = "text" id = "-" disabled/>
+    </p>
+    <p>X*Y= :
+      <input type = "text" id = "*" disabled/>
+    </p>
+    <p>X/Y= :
+      <input type = "text" id = "/" disabled/>
+    </p>
+    <p>X^Y= :
+      <input type = "text" id = "^" disabled/>
+    </p>
+    <input type = "button" value = "Initialize" onclick = "Initialize()"/>
+  </select>
+</body>
+</html>
+
+<script>
+  function Initialize()
+  {
+    document.getElementById("x").value = 5;
+    document.getElementById("y").value = 2;
+    CalcValues();
+  }
+  function CalcValues()
+  {
+    var x = document.getElementById("x").value;
+    var y = document.getElementById("y").value;
+    x = parseInt(x);
+    y = parseInt(y);
+    document.getElementById("+").value = x+y;
+    document.getElementById("-").value = x-y;
+    document.getElementById("*").value = x*y;
+    document.getElementById("/").value = x/y;
+    document.getElementById("^").value = x**y;
+  }
+  window.onload = Initialize;
+</script>
